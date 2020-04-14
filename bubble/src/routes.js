@@ -8,6 +8,7 @@ import Feed from './Feed';
 import Games from './Games';
 import Group from './Group';
 import Profile from './Profile';
+import ProfileEdit from './Profile/ProfileEdit';
 import Rank from './Rank';
 
 export default function Routes(){
@@ -21,7 +22,8 @@ export default function Routes(){
                 <Route path="/" exact component={Feed}></Route>
                 <Route path="/game" component={Games}></Route>
                 <Route path="/group" component={Group}></Route>
-                <Route path="/profile" component={Profile}></Route>
+                <Route path="/profile" exact component={Profile}></Route>
+                <Route path="/profile/edit" exact component={ProfileEdit}></Route>
                 <Route path="/ranking" component={Rank}></Route>
             </Switch>
         </BrowserRouter>

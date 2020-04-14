@@ -1,0 +1,59 @@
+.profile {
+    width: 600px;
+    height: 600px;
+}
+
+.profile .profile__header {
+    width: 100%;
+    height: 90px;
+    background-color: #4e4fc2;
+}
+
+.profile .profile__header .profile__header-photo {
+    width: 150px;
+    height: 150px;
+    background-color: #4e4fc2;
+    border: 5px solid #eee;
+    border-radius: 50%;
+    position: relative;
+    top: 20px;
+    left: 30px;
+    background-image: url(/bg.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+
+.profile .profile__name h2 {
+    text-align: left;
+    margin-top: 0px;
+    margin-left: 200px;
+    font-size: 30px;
+    color: #444;
+}
+
+.profile .profile__bios {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    padding: 20px 30px;
+    margin: 0 30px;
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+.profile .profile__open-chat a {
+    display: block;
+    width: calc(100% - 60px);
+    background-color: #4e4fc2;
+    border: none;
+    outline: none;
+    color: #fff;
+    margin: 20px 30px;
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 10px;
+    box-sizing: border-box;
+}
