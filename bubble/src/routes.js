@@ -23,6 +23,7 @@ export default function Routes(){
                 <Route path="/game" component={Games}></Route>
                 <Route path="/group" component={Group}></Route>
                 <Route path="/profile" exact component={Profile}></Route>
+                <Route path="/profile/:id" exact component={Profile}></Route>
                 <Route path="/profile/edit" exact component={ProfileEdit}></Route>
                 <Route path="/ranking" component={Rank}></Route>
             </Switch>

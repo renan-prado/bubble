@@ -33,9 +33,9 @@ class Chat extends React.Component {
       <div className="chat modal">
         
         <div className="chat__top">
-          <div className="chat__back">
+          <a className="chat__back" href="/chat">
             <i></i>
-          </div>
+          </a>
           <div className="chat__name">
             <label> {params.id} Flores </label>
           </div>
