@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../Feed/Header';
 import ToPost from '../Feed/ToPost';
+import Posts from '../Feed/Posts';
 import {
   Link
 } from "react-router-dom";
@@ -10,8 +11,9 @@ function App() {
   return (
     <div className="profile modal">
 
-      <Header />
       <div className="overflow">
+          
+        <Header />
           
         <div className="profile__header">
           <div className="profile__header-photo"></div>
@@ -36,6 +38,7 @@ function App() {
         </div>
 
         <ToPost />
+        <Posts />
 
       </div>
 
