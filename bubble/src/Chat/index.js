@@ -30,7 +30,7 @@ class Chat extends React.Component {
     const { match: { params } } = this.props;
 
     return (
-      <div className="chat">
+      <div className="chat modal">
         
         <div className="chat__top">
           <div className="chat__back">

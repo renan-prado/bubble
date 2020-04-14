@@ -32,3 +32,16 @@ textarea, input {
   position: fixed;
   opacity: 0.2;
 }
+
+.modal {
+    background-color: #ffffffee;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    box-shadow: 8px 6px 19px #000;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
