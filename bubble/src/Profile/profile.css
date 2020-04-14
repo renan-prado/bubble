@@ -3,6 +3,10 @@
     height: 600px;
 }
 
+.profile.--edit {
+    height: 350px;
+}
+
 .profile .profile__header {
     width: 100%;
     height: 90px;
@@ -39,10 +43,11 @@
     padding: 20px 30px;
     margin: 0 30px;
     margin-bottom: 20px;
-    margin-top: 30px;
+    margin-top: 50px;
 }
 
-.profile .profile__open-chat a {
+.profile .profile__open-chat a,
+.profile .profile__edit button {
     display: block;
     width: calc(100% - 60px);
     background-color: #4e4fc2;
@@ -57,3 +62,29 @@
     padding: 10px;
     box-sizing: border-box;
 }
+
+.profile .profile__edit {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    padding: 0 30px;
+    box-sizing: border-box;
+}
+
+.profile .profile__edit input,
+.profile .profile__edit textarea {
+    outline: none;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    resize: none;
+}
+
+.profile .profile__edit textarea {
+    height: 70px;
+}
+
+.overflow {
+    overflow: auto;
+}
+

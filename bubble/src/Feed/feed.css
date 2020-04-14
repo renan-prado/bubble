@@ -76,3 +76,35 @@
 .feed__header .feed__header-item.--play.--active a {
     cursor: pointer;
 }
+
+.feed__topost {
+    width: 100%;
+}
+
+.feed__topost textarea {
+    width: 100%;
+    resize: none;
+    padding: 20px;
+    box-sizing: border-box;
+    margin: 0;
+    border: 0;
+    outline: none;
+}
+
+.feed__topost .feed_topost-footer {
+    width: 100%;
+    height: 35px;
+    background-color: #fafafa;
+    margin-top: -4px;
+}
+
+.feed__topost .feed_topost-footer button {
+    height: 100%;
+    padding: 0 40px;
+    background-color: #4e4fc2;
+    color: #fff;
+    float: right;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+}

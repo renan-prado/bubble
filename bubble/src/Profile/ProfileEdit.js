@@ -5,9 +5,15 @@ import './profile.css'
 
 function App() {
   return (
-    <div className="profile modal">
+    <div className="profile --edit modal">
 
       <Header />
+
+      <div className="profile__edit">
+        <input type="text" placeholder="Digite o seu nome"/>
+        <textarea placeholder="Digite uma descrição para o seu perfil"></textarea>
+        <button> Salvar </button>
+      </div>
       
     </div>
   );
