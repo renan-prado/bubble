@@ -46,5 +46,11 @@ textarea, input {
     box-sizing: border-box;
 }
 
+.overflow {
+  overflow: auto;
+}
+
+
 /* #4e4fc2 */
+/* #d63c4b */
 /* rgba(74,210,149,.5) */

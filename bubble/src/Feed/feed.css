@@ -79,6 +79,7 @@
 
 .feed__topost {
     width: 100%;
+    margin-top: 10px;
 }
 
 .feed__topost textarea {
@@ -107,4 +108,94 @@
     border: 0;
     outline: none;
     cursor: pointer;
+}
+
+
+.feed__posts {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 0 30px;
+    box-sizing: border-box;
+}
+
+
+.feed__posts .feed__post {
+    width: 1005;
+    box-sizing: border-box;
+    background-color: #fff;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    padding: 10px
+}
+
+.feed__posts .feed__post .feed__post-top {
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+}
+
+.feed__posts .feed__post .feed__post-top .feed__post-top-photo {
+    width: 35px;
+    height: 35px;
+    background-color: #444;
+    border-radius: 50%;
+    margin: 8px;
+}
+
+.feed__posts .feed__post .feed__post-top .feed__post-top-name label {
+    display: block;
+    margin: 9px 0px;
+    font-weight: bold;
+}
+
+.feed__posts .feed__post .feed__post-text {
+    padding: 20px;
+    text-align: left;
+}
+
+
+
+.feed__posts .feed__post .feed__post-footer {
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+}
+
+.feed__posts .feed__post .feed__post-footer-like {
+    width: 60px;
+    height: 40px;
+}
+
+.feed__posts .feed__post .feed__post-footer-like button {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    background-image: url(/like.png);
+    background-size: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.feed__posts .feed__post .feed__post-footer-like.--liked button {
+    background-image: url(/liked.png);
+}
+
+.feed__posts .feed__post .feed__post-footer-liked-list {
+    flex: 1;
+    display: flex;
+}
+
+.feed__posts .feed__post .feed__post-footer-liked-item {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #444;
+    margin: 9px 5px;
 }
