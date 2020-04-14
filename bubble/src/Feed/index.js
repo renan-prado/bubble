@@ -1,11 +1,16 @@
 import React from 'react';
+import Header from './Header'
+import './feed.css'
 
-function App() {
-  return (
-    <div className="">
-      Feed
-    </div>
-  );
+class Feed extends React.Component {
+
+  render(){
+    return (
+      <div className="feed modal">
+        <Header />
+      </div>
+    );
+  }
 }
 
-export default App;
+export default Feed;

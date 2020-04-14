@@ -133,3 +133,77 @@
     box-sizing: border-box;
     box-shadow: 0px -2px 6px 0px #ccc;
 }
+
+.chat .chat__list {
+    width: 100%;
+    margin-top: 20px;
+    box-sizing: border-box;
+    padding: 20px;
+    overflow: auto;
+}
+
+.chat .chat__list > a {
+    display: block;
+    width: 70px;
+    height: 70px;
+    max-width: 70px;
+    margin: 10px;
+    float: left;
+}
+
+.chat .chat__list > a .chat__person {
+    width: 100%;
+    height: 100%;
+    background-color: brown;
+    border-radius: 50%;;
+}
+
+
+.chat .group__list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+    padding-top: 50px;
+}
+
+.chat .group__list a {
+    flex: 1;
+    display: block;
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    margin: 0 20px;
+    background-color: #e5e5e5;
+    box-sizing: border-box;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.chat .group__list a:hover {
+    background-color: #ddd;
+    transition: .2s;
+}
+
+.chat .group__list a h2 {
+    font-size: 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.chat .group__list a .group__list-users {
+    display: flex;
+    margin: 0 5px;
+    margin-bottom: 10px;
+}
+
+.chat .group__list a .group__list-users .group__list-user {
+    width: 20px;
+    height: 20px;
+    background-color: brown;
+    border-radius: 50%;
+    margin: 0 5px;
+}
+
