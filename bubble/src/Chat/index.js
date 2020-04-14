@@ -1,6 +1,7 @@
 import React from 'react';
 import MsgBox from './MsgBox';
 import './chat.css';
+const { userLogged } = require('../Firebase');
 
 class Chat extends React.Component {
 
@@ -30,31 +31,41 @@ class Chat extends React.Component {
     const { match: { params } } = this.props;
 
     return (
-      <div className="chat modal">
-        
-        <div className="chat__top">
-          <a className="chat__back" href="/chat">
-            <i></i>
-          </a>
-          <div className="chat__name">
-            <label> {params.id} Flores </label>
-          </div>
+      <>
+        {
+          userLogged(user => {
+            if(user){
+              return (
+                <>
+                  <div className="chat modal">
+                    <div className="chat__top">
+                      <a className="chat__back" href="/chat">
+                        <i></i>
+                      </a>
+                      <div className="chat__name">
+                        <label> {params.id} Flores </label>
+                      </div>
 
-          <div className="chat__caracteres">
-            <label> <b>310</b> caracteres </label>
-          </div>
+                      <div className="chat__caracteres">
+                        <label> <b>310</b> caracteres </label>
+                      </div>
 
-        </div>
-        
-        <MsgBox allMsg={this.state.allMsg} />
+                    </div>
+                    
+                    <MsgBox allMsg={this.state.allMsg} />
 
-        <div className="chat__textarea">
+                    <div className="chat__textarea">
+                      <textarea placeholder="Digite sua mensagem aqui..."></textarea>
+                    </div>
 
-          <textarea placeholder="Digite sua mensagem aqui..."></textarea>
-
-        </div>
-
-      </div>
+                  </div>
+                </>
+              )
+            }
+          })
+        }
+      </>
+      
     );
 
   }

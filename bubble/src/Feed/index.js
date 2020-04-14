@@ -4,19 +4,32 @@ import ToPost from './ToPost'
 import Posts from './Posts'
 import './feed.css'
 
+const { userLogged } = require('../Firebase');
+
 class Feed extends React.Component {
 
   render(){
+
     return (
-      <div className="feed modal">
-
-        <div className="overflow">
-          <Header />
-          <ToPost />
-          <Posts />
-        </div>
-
-      </div>
+      <>
+          {
+            userLogged(user => {
+              if(user){
+                return (
+                  <>
+                    <div className="feed modal">
+                      <div className="overflow">
+                        <Header />
+                        <ToPost />
+                        <Posts />
+                      </div>
+                    </div>
+                  </>
+                )
+              }
+            })
+          }
+      </>
     );
   }
 }
