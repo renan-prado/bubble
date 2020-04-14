@@ -7,17 +7,26 @@ import './chat.css';
 const { userLogged } = require('../Firebase');
 
 class ChatList extends React.Component {
-
+    state = {
+        logged: false
+      }
+    
+      componentDidMount(){
+        userLogged(user => {
+          if(user){
+            this.setState({logged: true});
+          }
+        });
+      }
     render(){
 
         return (
 
             <>
-            {
-              userLogged(user => {
-                if(user){
-                  return (
-                    <>
+
+                {
+                    this.state.logged
+                    ? (
                         <div className="chat modal">
                             <Header />
 
@@ -101,18 +110,16 @@ class ChatList extends React.Component {
                                     </Link>
 
                                 </div>
-
                             </div>
-
-                            
-
                         </div>
-                    </>
-                  )
+                    )
+
+                    : ("")
                 }
-              })
-            }
-        </>
+         
+                
+            
+            </>
 
             
         );

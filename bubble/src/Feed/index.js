@@ -8,27 +8,39 @@ const { userLogged } = require('../Firebase');
 
 class Feed extends React.Component {
 
+  state = {
+    logged: false
+  }
+
+  componentDidMount(){
+    userLogged(user => {
+      if(user){
+        this.setState({logged: true});
+      }
+    });
+  }
+
   render(){
 
     return (
       <>
-          {
-            userLogged(user => {
-              if(user){
-                return (
-                  <>
-                    <div className="feed modal">
-                      <div className="overflow">
-                        <Header />
-                        <ToPost />
-                        <Posts />
-                      </div>
-                    </div>
-                  </>
-                )
-              }
-            })
-          }
+
+        {
+          this.state.logged
+          ? (
+              <div className="feed modal">
+                <div className="overflow">
+                  <Header />
+                  <ToPost />
+                  <Posts />
+                </div>
+              </div>
+          )
+          : ("")
+        }
+          
+        
+              
       </>
     );
   }

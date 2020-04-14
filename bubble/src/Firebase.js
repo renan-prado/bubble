@@ -33,7 +33,8 @@ export const signInWithEmailAndPassword = (email, password, callback = () => fal
   Firebase
     .auth()
     .signInWithEmailAndPassword(email, password)
-    .catch(callback());
+    .catch(error => callback(error))
+    .then(() => callback(false));
 }
 
 export const userLogged = callback => {
