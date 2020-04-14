@@ -15,7 +15,7 @@ export default function Routes(){
         <BrowserRouter>
             <Switch>
                 <Route path="/login" component={Login}></Route>
-                <Route path="/chat" component={Chat}></Route>
+                <Route path="/chat/:id" component={Chat}></Route>
                 <Route path="/" exact component={Feed}></Route>
                 <Route path="/game" component={Games}></Route>
                 <Route path="/group" component={Group}></Route>

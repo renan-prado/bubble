@@ -40,11 +40,32 @@
     opacity: .8;
 }
 
+.chat .chat__top .chat__name {
+    flex: 1;
+}
+
 .chat .chat__top .chat__name label {
     display: block;
     padding: 17px 0;
     text-transform: uppercase;
     letter-spacing: 1px;
+    text-align: left;
+}
+
+.chat .chat__top .chat__caracteres {
+    width: 130px;
+    align-self: flex-end;
+}
+
+.chat .chat__top .chat__caracteres label {
+    display: block;
+    padding: 19px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 10px;
+    color: #888;
+    text-align: left;
+
 }
 
 .chat .chat__message {

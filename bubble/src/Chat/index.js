@@ -1,95 +1,63 @@
 import React from 'react';
+import MsgBox from './MsgBox';
 import './chat.css';
 
-function App() {
-  return (
-    <div className="chat">
-      
-      <div className="chat__top">
+class Chat extends React.Component {
 
-        <div className="chat__back">
-          <i></i>
+  state = {
+      allMsg: [
+        {
+          who: 'me',
+          msg: 'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum'
+        },
+        {
+          who: 'you',
+          msg: 'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum'
+        },
+        {
+          who: 'you',
+          msg: 'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum'
+        },
+        {
+          who: 'me',
+          msg: 'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum'
+        },
+      ]
+  }
+
+  render(){
+
+    const { match: { params } } = this.props;
+
+    return (
+      <div className="chat">
+        
+        <div className="chat__top">
+          <div className="chat__back">
+            <i></i>
+          </div>
+          <div className="chat__name">
+            <label> {params.id} Flores </label>
+          </div>
+
+          <div className="chat__caracteres">
+            <label> <b>310</b> caracteres </label>
+          </div>
+
         </div>
+        
+        <MsgBox allMsg={this.state.allMsg} />
 
-        <div className="chat__name">
-          <label> Larissa Flores </label>
+        <div className="chat__textarea">
+
+          <textarea placeholder="Digite sua mensagem aqui..."></textarea>
+
         </div>
 
       </div>
-      
-      <div className="chat__message">
+    );
 
-        <div className="chat__message-msg --me">
-          <div className="chat__message-photo"></div>
-          <div className="chat__message-talk">
-            <label> Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum </label>
-          </div>
-        </div>
-
-        <div className="chat__message-msg --you">
-          <div className="chat__message-photo"></div>
-          <div className="chat__message-talk">
-            <label> Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum </label>
-          </div>
-        </div>
-
-        <div className="chat__message-msg --you">
-          <div className="chat__message-photo"></div>
-          <div className="chat__message-talk">
-            <label> Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum </label>
-          </div>
-        </div>
-
-        <div className="chat__message-msg --you">
-          <div className="chat__message-photo"></div>
-          <div className="chat__message-talk">
-            <label> Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum </label>
-          </div>
-        </div>
-
-        <div className="chat__message-msg --you">
-          <div className="chat__message-photo"></div>
-          <div className="chat__message-talk">
-            <label> Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum </label>
-          </div>
-        </div>
-
-
-        <div className="chat__message-msg --you">
-          <div className="chat__message-photo"></div>
-          <div className="chat__message-talk">
-            <label> Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum </label>
-          </div>
-        </div>
-
-        <div className="chat__message-msg --you">
-          <div className="chat__message-photo"></div>
-          <div className="chat__message-talk">
-            <label> Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum </label>
-          </div>
-        </div>
-
-        <div className="chat__message-msg --me">
-          <div className="chat__message-photo"></div>
-          <div className="chat__message-talk">
-            <label> Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum </label>
-          </div>
-        </div>
-
-
-        <div className="chat__message-msg --you">
-        </div>
-
-      </div>
-
-      <div className="chat__textarea">
-
-        <textarea placeholder="Digite sua mensagem aqui..."></textarea>
-
-      </div>
-
-    </div>
-  );
+  }
 }
 
-export default App;
+export default Chat;
