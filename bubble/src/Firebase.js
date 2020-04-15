@@ -36,16 +36,43 @@ export const saveProfile = (userId, username, bios, image) => {
 
 };
 
+export const toPost = (userId, msg) => {
+
+  const uuidv4 = () => {
+    return 'xxxxxxxxxxxx4x'.replace(/[xy]/g, function(c) {
+      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+  }
+
+  const d = new Date();
+  let year = d.getFullYear();
+  let month = String(d.getMonth()).length === 1 ? '0' + d.getMonth() : d.getMonth();
+  let day = String(d.getDate()).length === 1 ? '0' + d.getDate() : d.getDate();
+  let hours = String(d.getHours()).length === 1 ? '0' + d.getHours() : d.getHours();
+  let minutes = String(d.getMinutes()).length === 1 ? '0' + d.getMinutes() : d.getMinutes();
+  let seconds =String(d.getSeconds()).length === 1 ? '0' + d.getSeconds() : d.getSeconds();
+  let now = year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
+
+  Firebase
+    .database()
+    .ref('posts/' + Date.now() + uuidv4())
+    .set({
+      userId,
+      msg,
+      likes: false,
+      data: now
+    });
+
+};
+
 
 export const createUserWithEmailAndPassword = (email, password, callback = () => false) => {
   Firebase
     .auth()
     .createUserWithEmailAndPassword(email, password)
     .catch(user => {
-      
       callback(user);
-      console.log('===', user);
-      
     });
 }
 
@@ -93,6 +120,11 @@ export const readProfile = (id, callback) => {
 
 export const getProfiles = callback => {
   var starCountRef = Firebase.database().ref('users/');
+  starCountRef.on('value', value => callback(value.val()));
+}
+
+export const getPosts = callback => {
+  var starCountRef = Firebase.database().ref('posts/');
   starCountRef.on('value', value => callback(value.val()));
 }
 

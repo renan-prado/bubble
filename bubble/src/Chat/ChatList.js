@@ -86,7 +86,7 @@ class ChatList extends React.Component {
 
                                 {
                                     this.state.profiles &&
-                                    this.state.profiles.length == 0 &&
+                                    this.state.profiles.length === 0 &&
                                     (<label> Ninguém terminou o cadastro ainda :/ </label>)
                                 }
 

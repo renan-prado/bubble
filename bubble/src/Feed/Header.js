@@ -16,7 +16,7 @@ class Header extends React.Component {
         <div className="feed__header-item --rules"><Link to="/"></Link></div>
         <div className="feed__header-item --chat"><Link to="/chat"></Link></div>
         <div className="feed__header-item --rank"><Link to="/ranking"></Link></div>
-        <div className="feed__header-item --profile"><Link to="/profile"></Link></div>
+        <div className="feed__header-item --profile"><a href="/profile"></a></div>
         <div className="feed__header-item --play"><Link to="/"></Link></div>
 
       </div>

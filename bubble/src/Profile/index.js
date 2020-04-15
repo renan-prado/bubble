@@ -18,6 +18,7 @@ class Profile extends React.Component {
     logged: false,
     userId: false,
     me: true,
+    run: false,
     profile: {}
   }
 
@@ -35,7 +36,15 @@ class Profile extends React.Component {
   getProfile = () => {
     const { match: { params } } = this.props;
 
-    readProfile(params.id ? params.id : this.state.userId, profile => this.setState({ profile }));
+    if(this.state.run) return;
+
+    this.setState({ run: true });
+
+    readProfile(params.id ? params.id : this.state.userId, profile => {
+
+      profile.id = params.id ? params.id : this.state.userId;
+      this.setState({ profile });
+    });
 
     if(params.id && params.id !== this.state.userId)
       this.setState({ me: false });
@@ -44,9 +53,15 @@ class Profile extends React.Component {
       window.location.href = '/profile'
     }
 
+    this.setState({ run: false });
+
   }
 
   render(){
+
+    console.log(this.state.profile);
+    
+
     return (      
       <>
 
@@ -88,7 +103,7 @@ class Profile extends React.Component {
                   )
                 }
 
-                <Posts />
+                <Posts userId={this.state.profile.id} />
 
               </div>
 

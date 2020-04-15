@@ -144,6 +144,8 @@
     background-color: #444;
     border-radius: 50%;
     margin: 8px;
+    background-position: center;
+    background-size: cover;
 }
 
 .feed__posts .feed__post .feed__post-top .feed__post-top-name label {

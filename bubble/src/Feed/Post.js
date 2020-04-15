@@ -5,13 +5,13 @@ class Post extends React.Component {
 
   render(){
 
-    const { author, text, liked } = this.props;
+    const { author, text, liked, image } = this.props;
 
     return (
       <div className="feed__post">
 
         <div className="feed__post-top">
-          <div className="feed__post-top-photo"></div>
+          <div className="feed__post-top-photo" style={{ backgroundImage: `url(/${image})` }}></div>
           <div className="feed__post-top-name">
             <label>{author}</label>
           </div>
