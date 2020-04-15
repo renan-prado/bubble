@@ -6,20 +6,44 @@ import {
   Link
 } from "react-router-dom";
 import './profile.css'
-const { userLogged } = require('../Firebase');
+
+const {
+  userLogged,
+  readProfile
+} = require('../Firebase');
 
 class Profile extends React.Component {
 
   state = {
-    logged: false
+    logged: false,
+    userId: false,
+    me: true,
+    profile: {}
   }
 
   componentDidMount(){
     userLogged(user => {
       if(user){
-        this.setState({logged: true});
+        this.setState({ logged: true , userId: user.id});
       }
+      
+      this.getProfile();
+
     });
+  }
+
+  getProfile = () => {
+    const { match: { params } } = this.props;
+
+    readProfile(params.id ? params.id : this.state.userId, profile => this.setState({ profile }));
+
+    if(params.id && params.id !== this.state.userId)
+      this.setState({ me: false });
+
+    else if(params.id && params.id === this.state.userId) {
+      window.location.href = '/profile'
+    }
+
   }
 
   render(){
@@ -35,28 +59,35 @@ class Profile extends React.Component {
                 <Header />
                   
                 <div className="profile__header">
-                  <div className="profile__header-photo"></div>
+                  <div className="profile__header-photo" style={{ 'backgroundImage': `url(/${this.state.profile.image})` }}></div>
                 </div>
 
                 <div className="profile__name">
-                  <h2>Renan Prado</h2>
+                  <h2> { this.state.profile.username } </h2>
                 </div>
 
                 <div className="profile__bios">
-                  <label>  
-                    "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus, possimus? Consequatur commodi doloribus quod itaque, consequuntur non, fuga laborum reprehenderit est ut deleniti illo molestias delectus a totam asperiores qui?"
-                  </label>
+                  <label>  {this.state.profile.bios} </label>
                 </div>
 
-                <div className="profile__open-chat">
-                  <Link to="/chat/lari">Solicitar Conversa</Link>
-                </div>
+                {
+                  this.state.me
+                  ? (
+                    <>
+                      <div className="profile__open-chat">
+                        <Link to="/edit/profile">Editar Perfil</Link>
+                      </div>
+                      <ToPost />
+                    </>
+                  )
+                  :
+                  (
+                    <div className="profile__open-chat">
+                      <Link to="/chat/lari">Solicitar Conversa</Link>
+                    </div>
+                  )
+                }
 
-                <div className="profile__open-chat">
-                  <Link to="/profile/edit">Editar Perfil</Link>
-                </div>
-
-                <ToPost />
                 <Posts />
 
               </div>

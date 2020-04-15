@@ -4,20 +4,42 @@ import {
     Link
   } from "react-router-dom";
 import './chat.css';
-const { userLogged } = require('../Firebase');
+const { userLogged,getProfiles } = require('../Firebase');
 
 class ChatList extends React.Component {
     state = {
-        logged: false
-      }
+        logged: false,
+        profiles: false
+    }
     
-      componentDidMount(){
+    componentDidMount(){
         userLogged(user => {
-          if(user){
-            this.setState({logged: true});
-          }
+            if(user){
+                this.setState({logged: true, userId: user.id});
+            }
+
+            this.getAllProfiles();
         });
-      }
+    }
+
+    getAllProfiles(){
+        getProfiles(profiles => {
+
+            let prodfilesKeys = Object.keys(profiles);
+            let arrayProfiles = [];
+            let temp;
+
+            prodfilesKeys.forEach(profile => {
+                temp = profiles[profile];
+                temp.id = profile;
+                arrayProfiles.push(temp);
+            });
+
+            this.setState({profiles: arrayProfiles});
+        });
+    }
+
+
     render(){
 
         return (
@@ -32,55 +54,42 @@ class ChatList extends React.Component {
 
                             <div className="chat__list">
 
-                                <Link to="/profile/teste">
-                                    <div className="chat__person">
-                                    </div>
-                                </Link>
+                                {
+                                    this.state.profiles &&
+                                    this.state.profiles.length > 0 &&
+                                    this.state.profiles.map(profile => {
 
-                                <Link to="/profile/teste">
-                                    <div className="chat__person">
-                                    </div>
-                                </Link>
+                                        if( profile.id && 
+                                            profile.username &&
+                                            profile.image &&
+                                            profile.bios &&
+                                            profile.id !== '' &&
+                                            profile.username !== '' &&
+                                            profile.image !== '' &&
+                                            profile.bios !== '' &&
+                                            profile.id !== this.state.userId){
 
-                                <Link to="/profile/teste">
-                                    <div className="chat__person">
-                                    </div>
-                                </Link>
+                                                return (
+                                                    <Link to={`/profile/${profile.id}`}>
+                                                        <div className="chat__person" style={{ 'backgroundImage': `url(/${profile.image})` }}>
+                                                        </div>
+                                                    </Link>
+                                                )
+                                            }
 
-                                <Link to="/profile/teste">
-                                    <div className="chat__person">
-                                    </div>
-                                </Link>
+                                        else {
+                                            return ("");
+                                        }
 
-                                <Link to="/profile/teste">
-                                    <div className="chat__person">
-                                    </div>
-                                </Link>
+                                    })
+                                }
 
-                                <Link to="/profile/teste">
-                                    <div className="chat__person">
-                                    </div>
-                                </Link>
+                                {
+                                    this.state.profiles &&
+                                    this.state.profiles.length == 0 &&
+                                    (<label> Ninguém terminou o cadastro ainda :/ </label>)
+                                }
 
-                                <Link to="/profile/teste">
-                                    <div className="chat__person">
-                                    </div>
-                                </Link>
-
-                                <Link to="/profile/teste">
-                                    <div className="chat__person">
-                                    </div>
-                                </Link>
-
-                                <Link to="/profile/teste">
-                                    <div className="chat__person">
-                                    </div>
-                                </Link>
-
-                                <Link to="/profile/teste">
-                                    <div className="chat__person">
-                                    </div>
-                                </Link>
                                 
                                 <div className="group__list">
                                     <Link to="/group/teste">

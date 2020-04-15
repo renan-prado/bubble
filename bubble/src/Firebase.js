@@ -22,11 +22,31 @@ export const writeUserData = (userId, name, email) => {
 };
 
 
+export const saveProfile = (userId, username, bios, image) => {
+  
+  Firebase
+    .database()
+    .ref('users/' + userId)
+    .set({
+      image,
+      username,
+      bios,
+      editName: true
+    });
+
+};
+
+
 export const createUserWithEmailAndPassword = (email, password, callback = () => false) => {
   Firebase
     .auth()
     .createUserWithEmailAndPassword(email, password)
-    .catch(callback());
+    .catch(user => {
+      
+      callback(user);
+      console.log('===', user);
+      
+    });
 }
 
 export const signInWithEmailAndPassword = (email, password, callback = () => false) => {
@@ -64,8 +84,18 @@ export const readDocument = id => {
   starCountRef.on('value', function(snapshot) {
     alert(snapshot.val());
   });
-
 }
+
+export const readProfile = (id, callback) => {
+  var starCountRef = Firebase.database().ref('users/' + id + '/');
+  starCountRef.on('value', value => callback(value.val()));
+}
+
+export const getProfiles = callback => {
+  var starCountRef = Firebase.database().ref('users/');
+  starCountRef.on('value', value => callback(value.val()));
+}
+
 
 
 export default Firebase;

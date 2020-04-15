@@ -24,7 +24,7 @@ export default function Routes(){
                 <Route path="/group" component={Group}></Route>
                 <Route path="/profile" exact component={Profile}></Route>
                 <Route path="/profile/:id" exact component={Profile}></Route>
-                <Route path="/profile/edit" exact component={ProfileEdit}></Route>
+                <Route path="/edit/profile" exact component={ProfileEdit}></Route>
                 <Route path="/ranking" component={Rank}></Route>
             </Switch>
         </BrowserRouter>

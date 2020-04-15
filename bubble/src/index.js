@@ -4,7 +4,7 @@ import App from './App';
 const { writeUserData, createUserWithEmailAndPassword, signInWithEmailAndPassword, userLogged, readDocument, logout } = require('./Firebase');
 
 // writeUserData('1', 'Renan', 'hehe');
-// createUserWithEmailAndPassword('renan@bubble.com', '123456');
+// createUserWithEmailAndPassword('lari@bubble.com', '123456');
 // signInWithEmailAndPassword('renan@bubble.com', '123456');
 // logout();
 
