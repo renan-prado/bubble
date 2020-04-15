@@ -200,4 +200,7 @@
     border-radius: 50%;
     background-color: #444;
     margin: 9px 5px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }

@@ -1,11 +1,19 @@
 import React from 'react';
 import './feed.css'
+const { toLike } = require('../Firebase');
 
 class Post extends React.Component {
 
+  toLikeMethod = () => {
+    const { id, userLogged, liked } = this.props;
+    toLike(id, userLogged, liked);
+    window.location.reload();
+  }
+
   render(){
 
-    const { author, text, liked, image } = this.props;
+    const { author, text, liked, likes, image } = this.props;
+    const ArrayLikes = likes ? (Object.keys(likes)).map(like => likes[like]) : [];
 
     return (
       <div className="feed__post">
@@ -21,12 +29,18 @@ class Post extends React.Component {
         </div>
         <div className="feed__post-footer">
           <div className={liked ? "feed__post-footer-like --liked" : "feed__post-footer-like"}>
-            <button></button>
+            <button onClick={this.toLikeMethod}></button>
           </div>
           <div className="feed__post-footer-liked-list">
-            <div className="feed__post-footer-liked-item"></div>
-            <div className="feed__post-footer-liked-item"></div>
-            <div className="feed__post-footer-liked-item"></div>
+
+            {
+              ArrayLikes.map((like, index) => {
+                return (
+                  <div key={index} className="feed__post-footer-liked-item" style={{ backgroundImage: `url(/${like.image})` }}></div>
+                )
+              })
+            }
+            
           </div>
         </div>
 

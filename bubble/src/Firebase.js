@@ -36,6 +36,23 @@ export const saveProfile = (userId, username, bios, image) => {
 
 };
 
+export const toLike = (postId, userId, liked) => {
+  
+  if(liked){
+    let userRef = Firebase.database().ref('posts/' + postId + '/likes/' + userId);
+    userRef.remove();
+    return;
+  }
+
+  Firebase
+    .database()
+    .ref('posts/' + postId + '/likes/' + userId)
+    .set({
+      userId,
+      data: Date.now()
+    });
+}
+
 export const toPost = (userId, msg) => {
 
   const uuidv4 = () => {
