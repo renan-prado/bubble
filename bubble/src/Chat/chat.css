@@ -93,6 +93,8 @@
     height: 40px;
     border-radius: 50%;
     background-color: #000;
+    background-size: cover;
+    background-position: center;
 }
 
 .chat .chat__message .chat__message-msg .chat__message-talk {
@@ -113,6 +115,7 @@
     color: #fff;
     text-align: left;
     display: block;
+    word-break: break-all;
 }
 
 .chat .chat__textarea {

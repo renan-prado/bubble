@@ -17,11 +17,12 @@ export default function Routes(){
         <BrowserRouter>
             <Switch>
                 <Route path="/login" component={Login}></Route>
-                <Route path="/chat/:id" component={Chat}></Route>
+                <Route path="/chat/:chatId" component={Chat}></Route>
                 <Route path="/chat/" component={ChatList}></Route>
                 <Route path="/" exact component={Feed}></Route>
                 <Route path="/game" component={Games}></Route>
-                <Route path="/group" component={Group}></Route>
+                <Route path="/group" exact component={Group}></Route>
+                <Route path="/group/:groupId" exact component={Chat}></Route>
                 <Route path="/profile" exact component={Profile}></Route>
                 <Route path="/profile/:id" exact component={Profile}></Route>
                 <Route path="/edit/profile" exact component={ProfileEdit}></Route>

@@ -59,9 +59,6 @@ class Profile extends React.Component {
 
   render(){
 
-    console.log(this.state.profile);
-    
-
     return (      
       <>
 
@@ -98,7 +95,7 @@ class Profile extends React.Component {
                   :
                   (
                     <div className="profile__open-chat">
-                      <Link to="/chat/lari">Solicitar Conversa</Link>
+                      <Link to={`/chat/${this.state.profile.id}`}>Solicitar Conversa</Link>
                     </div>
                   )
                 }

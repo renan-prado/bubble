@@ -15,7 +15,12 @@ class MsgBox extends React.Component {
                 {
                     allMsg &&
                     allMsg.length > 0 &&
-                    allMsg.map(item => <Msg who={item.who} msg={item.msg} />)
+                    allMsg.map((item, i) => {
+
+                        // console.log('item', item);
+
+                        return <Msg key={i} who={item.who} image={item.image} msg={item.msg} />
+                    })
                 }
 
             </div>

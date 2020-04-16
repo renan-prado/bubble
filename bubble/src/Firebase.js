@@ -36,6 +36,62 @@ export const saveProfile = (userId, username, bios, image) => {
 
 };
 
+export const verifyChatCreate = (chatId, user1, user2) => {
+
+  var starCountRef = Firebase.database().ref('chat/' + chatId);
+  starCountRef.on('value', chat => {
+
+    if(!chat.val()){
+      Firebase
+        .database()
+        .ref('chat/' + chatId)
+        .set({
+          members: [user1, user2],
+          msgs: false,
+          notification: false,
+        })
+        .then(() => {
+
+          Firebase
+            .database()
+            .ref('chat/' + chatId + '/notification/' + user1)
+            .set({
+              data: false,
+              view: true
+            })
+
+          Firebase
+            .database()
+            .ref('chat/' + chatId + '/notification/' + user2)
+            .set({
+              data: false,
+              view: true
+            })
+
+        });
+    }
+  
+  });
+
+  
+
+};
+
+
+export const sendMessageChat = (chatId, msg, userId) => {
+
+  const date = Date.now();
+
+  Firebase
+    .database()
+    .ref('chat/' + chatId + '/msgs/' + date)
+    .set({
+      date,
+      msg,
+      userId
+    });
+}
+
 export const toLike = (postId, userId, liked) => {
   
   if(liked){
@@ -57,7 +113,7 @@ export const toPost = (userId, msg) => {
 
   const uuidv4 = () => {
     return 'xxxxxxxxxxxx4x'.replace(/[xy]/g, function(c) {
-      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
       return v.toString(16);
     });
   }
@@ -82,7 +138,6 @@ export const toPost = (userId, msg) => {
     });
 
 };
-
 
 export const createUserWithEmailAndPassword = (email, password, callback = () => false) => {
   Firebase
@@ -145,6 +200,12 @@ export const getPosts = callback => {
   starCountRef.on('value', value => callback(value.val()));
 }
 
+export const getMessages = (chatId, callback) => {
+  var starCountRef = Firebase.database().ref('chat/' + chatId);
+  starCountRef
+  .orderByChild('data')
+  .on('value', value => callback(value.val()));
+}
 
 
 export default Firebase;

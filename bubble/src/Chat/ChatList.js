@@ -57,7 +57,7 @@ class ChatList extends React.Component {
                                 {
                                     this.state.profiles &&
                                     this.state.profiles.length > 0 &&
-                                    this.state.profiles.map(profile => {
+                                    this.state.profiles.map((profile, i) => {
 
                                         if( profile.id && 
                                             profile.username &&
@@ -70,7 +70,7 @@ class ChatList extends React.Component {
                                             profile.id !== this.state.userId){
 
                                                 return (
-                                                    <Link to={`/profile/${profile.id}`}>
+                                                    <Link key={i} to={`/profile/${profile.id}`}>
                                                         <div className="chat__person" style={{ 'backgroundImage': `url(/${profile.image})` }}>
                                                         </div>
                                                     </Link>

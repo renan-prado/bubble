@@ -5,7 +5,7 @@ const { writeUserData, createUserWithEmailAndPassword, signInWithEmailAndPasswor
 
 // writeUserData('1', 'Renan', 'hehe');
 // createUserWithEmailAndPassword('lari@bubble.com', '123456');
-signInWithEmailAndPassword('renan@bubble.com', '123456');
+// signInWithEmailAndPassword('renan@bubble.com', '123456');
 // signInWithEmailAndPassword('lari@bubble.com', '123456');
 // logout();
 
